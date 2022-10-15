@@ -14,8 +14,8 @@ function App() {
           <MainLayout />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Mint" element={<Mint />} />
-            <Route path="/Faucet" element={<Faucet />} />
+            <Route path="Mint" element={<Mint />} />
+            <Route path="Faucet" element={<Faucet />} />
           </Routes>
         </BrowserRouter>
       </MetaMaskProvider>
