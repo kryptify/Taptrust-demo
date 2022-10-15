@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color: #363d4e;
+}
+
+.quad-page{
+    text-align: center;
+    width:800px;
+}
+
+.quad-page h1{
+    font-size: 30px;
+}
+
+.quad-page .quad-section-intro{
+    margin: 15px 0;
+}
+
+.quad-page .quad-section-buttons, .quad-page .quad-section-tos-accept{
+    margin: 15px 0;
+}
+
+.quad-page .quad-section-buttons button{
+    border-radius: 0.5rem;
+    background-color: rgb(36 41 47);
+    padding: 5px 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
