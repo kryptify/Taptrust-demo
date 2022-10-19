@@ -17,7 +17,7 @@ const ErrorType = {
   OTHER: "OTHER",
 };
 
-export default function Mint() {
+export default function MintQuadrata() {
   // State
   const [signer, setSigner] = useState(null);
   const [account, setAccount] = useState(null);
@@ -36,9 +36,9 @@ export default function Mint() {
     }
     const accounts = await ethereum.request({ method: "eth_accounts" });
     if (accounts.length !== 0) {
-      const account = accounts[0];
-      console.log("Found an arthorized account:", account);
-      setAccount(account);
+      const userAccount = accounts[0];
+      console.log("Found an authorized account:", userAccount);
+      setAccount(userAccount);
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       setProvider(provider);
       // Getting current chainId
@@ -132,7 +132,7 @@ export default function Mint() {
   if (!account) {
     return (
       <div>
-        Sign into your wallet to continue.
+        Sign into your wallet and refresh to continue.
       </div>
     )
   }
@@ -142,7 +142,7 @@ export default function Mint() {
   }
 
   return (
-    <div>
+    <div className="mt-24">
       <QuadrataKyc
         apiKey={API_KEY}
         onSign={handleSign}
@@ -154,7 +154,7 @@ export default function Mint() {
         mintComplete={mintComplete}
         transactionHash={transactionHash}
       >
-        <div>Loading component here....</div>
+        <div>Loading Quadrata component...</div>
       </QuadrataKyc>
     </div>
   );

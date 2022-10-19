@@ -4,10 +4,12 @@ import { ethers } from "ethers";
 import useMetaMask from "../hooks/useMetaMask";
 import { AppBar, Box, Container, Toolbar } from "@mui/material";
 import { check } from "prettier";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const { connect, disconnect, isActive, account } = useMetaMask();
   const [currentAccount, setCurrentAccount] = useState(null);
+  const navigate = useNavigate();
 
   const checkWalletIsConnected = async () => {
     const { ethereum } = window;
@@ -15,17 +17,15 @@ export default function Navbar() {
     if (!ethereum) {
       console.log("Make sure you have Metamask installed.");
       return;
-    } else {
-      console.log("Wallet exists!,We're ready to go!");
     }
 
     const accounts = await ethereum.request({ method: "eth_accounts" });
     if (accounts.length !== 0) {
       const account = accounts[0];
-      console.log("Found an arthorized account:", account);
+      console.log("Found an authorized account:", account);
       setCurrentAccount(account);
     } else {
-      console.log("No aurhorized account found");
+      console.log("No authorized account found");
       setCurrentAccount(null);
     }
   };
@@ -477,7 +477,7 @@ export default function Navbar() {
             </clipPath>{" "}
           </defs>{" "}
         </svg>
-        Sign up
+        Sign in
       </button>
     );
   };
@@ -507,8 +507,8 @@ export default function Navbar() {
         <div className="bg-gray-600">
           <Container maxWidth="lg">
             <Toolbar disableGutters>
-              <a href="/">
-                <button className="my-1 ml-3 font-bold">TapTrust Demo</button>
+              <a>
+                <button onClick={() => navigate("/")}  className="my-1 text-2xl ml-3 font-bold">TapTrust Demo</button>
               </a>
               <Box flexGrow={1} />
               <Box

@@ -5,8 +5,8 @@ import { useWeb3React } from "@web3-react/core";
 export const MetaMaskContext = React.createContext(null);
 
 export const MetaMaskProvider = ({ children }) => {
-  const { activate, account, library, connector, active, deactivate } =
-    useWeb3React();
+  const web3React = useWeb3React();
+  const { activate, account, library, connector, active, deactivate } = web3React;
 
   const [isActive, setIsActive] = useState(false);
   const [shouldDisable, setShouldDisable] = useState(false); // Should disable connect button while connecting to MetaMask
@@ -41,6 +41,7 @@ export const MetaMaskProvider = ({ children }) => {
     try {
       setShouldDisable(true);
       await deactivate();
+      alert('To disconnect, remove this site from the connected sites for your Metamask account');
       setShouldDisable(false);
     } catch (error) {
       console.log("Error on disconnnect: ", error);
